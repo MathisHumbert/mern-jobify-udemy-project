@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/MathisHumbert/mern-jobify-udemy-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "mongoose": "^6.1.5"
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.2.0",
+    "mongoose": "^6.1.5",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
