@@ -21,9 +21,10 @@ const register = async (req, res, next) => {
     user: {
       email: user.email,
       lastName: user.lastName,
-      location: user.location,
+
       name: user.name,
     },
+    location: user.location,
     token,
   });
 };
