@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 const app = express();
 import dotenv from 'dotenv';
@@ -15,6 +16,7 @@ import jobsRouter from './routes/jobsRouter.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 import notFoundMiddleware from './middleware/not-found.js';
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
