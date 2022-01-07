@@ -1,9 +1,9 @@
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
-  REGISTER_USER_BEGIN,
-  REGISTER_USER_ERROR,
-  REGISTER_USER_SUCCESS,
+  SETUP_USER_BEGIN,
+  SETUP_USER_SUCCESS,
+  SETUP_USER_ERROR,
 } from './action';
 
 const reducer = (state, action) => {
@@ -12,7 +12,7 @@ const reducer = (state, action) => {
       ...state,
       showAlert: true,
       alertType: 'danger',
-      alertText: 'Please provice all values!',
+      alertText: 'Please provide all values!',
     };
   }
   if (action.type === CLEAR_ALERT) {
@@ -23,10 +23,10 @@ const reducer = (state, action) => {
       alertText: '',
     };
   }
-  if (action.type === REGISTER_USER_BEGIN) {
+  if (action.type === SETUP_USER_BEGIN) {
     return { ...state, isLoading: true };
   }
-  if (action.type === REGISTER_USER_SUCCESS) {
+  if (action.type === SETUP_USER_SUCCESS) {
     return {
       ...state,
       isLoading: false,
@@ -36,10 +36,10 @@ const reducer = (state, action) => {
       jobLocation: action.payload.location,
       showAlert: true,
       alertType: 'success',
-      alertText: 'User Created! Redirecting...',
+      alertText: action.payload.alertText,
     };
   }
-  if (action.type === REGISTER_USER_ERROR) {
+  if (action.type === SETUP_USER_ERROR) {
     return {
       ...state,
       showAlert: true,
