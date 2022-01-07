@@ -7,8 +7,7 @@ const ProtectedRoute = ({ children }) => {
   if (!user) {
     return <Navigate to='/landing' />;
   }
-  // if there is one we allow him to access pages
-
+  // if there is one user loged in we allow him to access pages
   return children;
 };
 
