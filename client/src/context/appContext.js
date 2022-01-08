@@ -55,7 +55,7 @@ const AppProvider = ({ children }) => {
   // request
   authFetch.interceptors.request.use(
     (config) => {
-      // config.headers.common['Authorization'] = `Bearer ${state.token}`;
+      config.headers.common['Authorization'] = `Bearer ${state.token}`;
       return config;
     },
     (error) => {
@@ -165,23 +165,27 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CREATE_JOB_BEGIN });
     try {
       const { position, company, jobLocation, jobType, status } = state;
+
       await authFetch.post('/jobs', {
-        position,
         company,
+        position,
         jobLocation,
         jobType,
         status,
       });
-      dispatch({ type: CREATE_JOB_SUCCESS });
+      dispatch({
+        type: CREATE_JOB_SUCCESS,
+      });
+      // call function instead clearValues()
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
-      console.log(error.response.status);
       if (error.response.status === 401) return;
       dispatch({
         type: CREATE_JOB_ERROR,
-        payload: { mag: error.response.data.msg },
+        payload: { msg: error.response.data.msg },
       });
     }
+    clearAlert();
   };
 
   return (

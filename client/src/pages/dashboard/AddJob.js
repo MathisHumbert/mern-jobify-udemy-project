@@ -29,10 +29,10 @@ const AddJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!position || !company || !jobLocation) {
-    //   displayAlert();
-    //   return;
-    // }
+    if (!position || !company || !jobLocation) {
+      displayAlert();
+      return;
+    }
     if (isEditing) {
       return;
     }
