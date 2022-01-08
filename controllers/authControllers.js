@@ -49,7 +49,6 @@ const login = async (req, res) => {
   const token = user.createJWT();
   // set password undefined because we don't want to send the password in the response
   user.password = undefined;
-  console.log(user);
   res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
 
