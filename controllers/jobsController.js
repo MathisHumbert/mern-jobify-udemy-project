@@ -6,6 +6,7 @@ import {
   NotFoundError,
 } from '../errors/index.js';
 import checkPermissions from '../utils/checkPermission.js';
+import mongoose from 'mongoose';
 
 const createJob = async (req, res) => {
   const { position, company } = req.body;
@@ -63,6 +64,10 @@ const deleteJob = async (req, res) => {
 };
 
 const showStats = async (req, res) => {
+  let stats = await Job.aggregate([
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.userID) } },
+  ]);
+  res.status(StatusCodes.OK).json({ stats });
   res.send('show stats');
 };
 
