@@ -5328,6 +5328,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import path from 'path'
 
+// ES6 need to create __dirname
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // only when ready to deploy
